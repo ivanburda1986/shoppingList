@@ -1,14 +1,14 @@
 import firebase from "firebase";
 import database from "./firebase";
 
-export const receiveServerItems = () => {
-  firebase
+export async function receiveServerItems() {
+  const response = await firebase
     .database()
     .ref("/shoppinglist")
     .once("value")
     .then((snapshot) => {
       if (snapshot.exists()) {
-        return console.log(snapshot.val());
+        return snapshot.val();
       } else {
         console.log("No data available");
       }
@@ -16,4 +16,5 @@ export const receiveServerItems = () => {
     .catch(function (error) {
       console.log(error);
     });
-};
+  return response;
+}

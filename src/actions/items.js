@@ -12,6 +12,8 @@ function receiveItems(items) {
 
 export function handleReceiveServerItems() {
   return (dispatch) => {
-    return dispatch(receiveItems(receiveServerItems()));
+    receiveServerItems().then((data) => {
+      dispatch(receiveItems({ items: data }));
+    });
   };
 }
