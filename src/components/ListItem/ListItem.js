@@ -5,31 +5,19 @@ import { stringToBool } from "../../utils/helpers";
 
 export default function ListItem({ id }) {
   const item = useSelector((state) => state.items[id]);
-  item.completed = stringToBool(item.completed);
 
   const [itemTitle, setItemTitle] = React.useState(item.title);
-  const [itemCompletion, setItemCompletion] = React.useState(item.completed);
+  const [itemCompletion, setItemCompletion] = React.useState(stringToBool(item.completed));
 
   const dispatch = useDispatch();
 
-  const updateItem = (e) => {
+  const updateTitle = (e) => {
     e.preventDefault();
-
     //Request an update only if the title has changed
     if (itemTitle !== item.title) {
       dispatch(
         handleUpdateServerItem({
           completed: `${item.completed}`,
-          creationDate: `${item.creationDate}`,
-          id: `${item.id}`,
-          title: `${e.target.value}`,
-        })
-      );
-    }
-    if (itemCompletion !== item.completed) {
-      dispatch(
-        handleUpdateServerItem({
-          completed: `${itemCompletion}`,
           creationDate: `${item.creationDate}`,
           id: `${item.id}`,
           title: `${e.target.value}`,
@@ -42,13 +30,36 @@ export default function ListItem({ id }) {
     }
   };
 
+  const updateCompletion = () => {
+    setItemCompletion(!itemCompletion);
+    dispatch(
+      handleUpdateServerItem({
+        completed: `${!itemCompletion}`,
+        creationDate: `${item.creationDate}`,
+        id: `${item.id}`,
+        title: `${item.title}`,
+      })
+    );
+  };
+
   return (
     <li>
       <div>
-        <input type="checkbox" id="check" checked={item.completed} />
-        <input onChange={(e) => setItemTitle(e.target.value)} onBlur={(e) => updateItem(e)} value={itemTitle} id={item.id} />
+        <input type="checkbox" id="check" checked={itemCompletion} onClick={() => updateCompletion()} />
+        <input onChange={(e) => setItemTitle(e.target.value)} onBlur={(e) => updateTitle(e)} value={itemTitle} id={item.id} />
         <button type="button">x</button>
       </div>
     </li>
   );
 }
+
+// if (itemCompletion !== item.completed) {
+//   dispatch(
+//     handleUpdateServerItem({
+//       completed: `${itemCompletion}`,
+//       creationDate: `${item.creationDate}`,
+//       id: `${item.id}`,
+//       title: `${e.target.value}`,
+//     })
+//   );
+// }
