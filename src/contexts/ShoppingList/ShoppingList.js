@@ -6,12 +6,11 @@ export default function ShoppingList() {
   const shoppingListItems = useSelector((state) => state.items);
   //console.log(typeof shoppingListItems);
   if (shoppingListItems.length === 0) {
-    console.log("not here yet");
     return <div></div>;
   } else {
-    const shoppingListItemsSorted = Object.keys(shoppingListItems.items)
+    const shoppingListItemsSorted = Object.keys(shoppingListItems)
       .map((id) => {
-        const { title, creationDate, completed } = shoppingListItems.items[id];
+        const { title, creationDate, completed } = shoppingListItems[id];
         return {
           id,
           title,
@@ -20,7 +19,6 @@ export default function ShoppingList() {
         };
       })
       .sort((a, b) => b.creationDate - a.creationDate);
-    console.log(shoppingListItemsSorted);
 
     return (
       <ul>

@@ -18,3 +18,21 @@ export async function receiveServerItems() {
     });
   return response;
 }
+
+export async function updateServerItem(newData) {
+  console.log("Hello from the updateServerItem function");
+  const response = await firebase
+    .database()
+    .ref(`/shoppinglist/${newData.id}`)
+    .update(newData, (error) => {
+      if (error) {
+        console.log("Updating the items on the server has failed");
+        return "ok";
+      } else {
+        console.log("The item has been updated on the server successfully");
+        return "nok";
+      }
+    });
+  console.log(response);
+  return response;
+}

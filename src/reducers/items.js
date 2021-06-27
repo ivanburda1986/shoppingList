@@ -1,4 +1,4 @@
-import { ADD_ITEM, RECEIVE_ITEMS } from "../actions/items";
+import { RECEIVE_ITEMS, UPDATE_ITEM, ADD_ITEM } from "../actions/items";
 
 export default function items(state = [], action) {
   switch (action.type) {
@@ -6,6 +6,12 @@ export default function items(state = [], action) {
       return {
         ...state,
         ...action.items,
+      };
+    case UPDATE_ITEM:
+      console.log("Hello from the UPDATE_ITEM reducer");
+      return {
+        ...state,
+        [action.updatedItem.id]: action.updatedItem,
       };
     case ADD_ITEM:
       return {};
