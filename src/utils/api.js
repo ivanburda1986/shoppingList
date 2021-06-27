@@ -33,6 +33,5 @@ export async function updateServerItem(newData) {
         return "nok";
       }
     });
-  console.log(response);
   return response;
 }

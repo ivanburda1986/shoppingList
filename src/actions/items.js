@@ -31,10 +31,6 @@ export function handleUpdateServerItem(updatedItem) {
   console.log("Hello from handleUpdateServerItem");
   return (dispatch) => {
     dispatch(updateItem(updatedItem));
-    updateServerItem(updatedItem);
+    updateServerItem(updatedItem); //If server update request fails: add catch and trigger dispatch while passing the orignal item
   };
 }
-
-// updateServerItem(updatedItem).then(() => {
-
-// });

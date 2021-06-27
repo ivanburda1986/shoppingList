@@ -23,7 +23,7 @@ export default function ShoppingList() {
     return (
       <ul>
         {shoppingListItemsSorted.map((item) => (
-          <ListItem key={item.id} title={item.title} />
+          <ListItem key={item.id} id={item.id} />
         ))}
       </ul>
     );

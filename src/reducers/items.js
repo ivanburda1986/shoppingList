@@ -1,4 +1,5 @@
 import { RECEIVE_ITEMS, UPDATE_ITEM, ADD_ITEM } from "../actions/items";
+import { stringToBool } from "../utils/helpers";
 
 export default function items(state = [], action) {
   switch (action.type) {
