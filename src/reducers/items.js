@@ -1,6 +1,6 @@
 import { ADD_ITEM, RECEIVE_ITEMS } from "../actions/items";
 
-export default function items(state = {}, action) {
+export default function items(state = [], action) {
   switch (action.type) {
     case RECEIVE_ITEMS:
       return {
