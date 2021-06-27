@@ -1,0 +1,7 @@
+--Setup the database 
+--Add manually some entries to the database 
+Fetch the entries from the db and show them on the screen 
+Edit text of an entry 
+Tick/untick an entry 
+Show completed entries 
+Create a new entry 
