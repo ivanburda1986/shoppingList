@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleReceiveServerItems } from "./actions/items";
 
 import Navigation from "./components/Navigation/Navigation";
+import ItemCreation from "./components/ItemCreation/ItemCreation";
 import ShoppingList from "./contexts/ShoppingList/ShoppingList";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
     <Router>
       <div>
         <Navigation />
+        <ItemCreation />
         <ShoppingList />
       </div>
     </Router>

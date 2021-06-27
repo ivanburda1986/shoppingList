@@ -1,5 +1,4 @@
 import { RECEIVE_ITEMS, UPDATE_ITEM, ADD_ITEM } from "../actions/items";
-import { stringToBool } from "../utils/helpers";
 
 export default function items(state = [], action) {
   switch (action.type) {
@@ -15,7 +14,13 @@ export default function items(state = [], action) {
         [action.updatedItem.id]: action.updatedItem,
       };
     case ADD_ITEM:
-      return {};
+      console.log("State", state);
+      console.log("Action", action.newItem);
+      let newState = { ...state };
+      newState[action.newItem.id] = action.newItem;
+      return {
+        ...newState,
+      };
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import database from "./firebase";
 
+// Receive server items
 export async function receiveServerItems() {
   const response = await firebase
     .database()
@@ -19,12 +20,13 @@ export async function receiveServerItems() {
   return response;
 }
 
-export async function updateServerItem(newData) {
+// Update a server item
+export async function updateServerItem(updatedItem) {
   console.log("Hello from the updateServerItem function");
   const response = await firebase
     .database()
-    .ref(`/shoppinglist/${newData.id}`)
-    .update(newData, (error) => {
+    .ref(`/shoppinglist/${updatedItem.id}`)
+    .update(updatedItem, (error) => {
       if (error) {
         console.log("Updating the items on the server has failed");
         return "ok";
@@ -35,3 +37,20 @@ export async function updateServerItem(newData) {
     });
   return response;
 }
+
+// Add a server item
+export async function addServerItem(newItem) {
+  const response = await firebase
+    .database()
+    .ref("shoppinglist/" + newItem.id)
+    .set(newItem, (error) => {
+      if (error) {
+        console.log("Saving a new item to the server has failed");
+      } else {
+        console.log("A new item has been saved to the server successfully");
+      }
+    });
+  return response;
+}
+
+// Delete a server item
