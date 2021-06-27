@@ -16,11 +16,12 @@ export default function ItemCreation() {
         title: newTitle,
       })
     );
+    setNewTitle("");
   };
 
   return (
     <div>
-      <input placeholder="Item name ... " onChange={(e) => setNewTitle(e.target.value)} />
+      <input placeholder="Item name ... " value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
       <button type="button" onClick={() => createItem()}>
         +
       </button>
