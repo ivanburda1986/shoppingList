@@ -1,4 +1,4 @@
-import { receiveServerItems, updateServerItem, addServerItem } from "../utils/api";
+import { receiveServerItems, updateServerItem, addServerItem, deleteServerItem } from "../utils/api";
 
 export const RECEIVE_ITEMS = "RECEIVE_ITEMS";
 export const UPDATE_ITEM = "UPDATE_ITEM";
@@ -52,3 +52,16 @@ export function handleAddServerItem(newItem) {
 }
 
 // DELETE AN ITEM
+function deleteItem(itemId) {
+  return {
+    type: DELETE_ITEM,
+    itemId,
+  };
+}
+
+export function handleDeleteServerItem(itemId) {
+  return (dispatch) => {
+    dispatch(deleteItem(itemId));
+    deleteServerItem(itemId);
+  };
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { handleUpdateServerItem } from "../../actions/items";
+import { handleUpdateServerItem, handleDeleteServerItem } from "../../actions/items";
 import { stringToBool } from "../../utils/helpers";
 
 export default function ListItem({ id }) {
@@ -42,24 +42,19 @@ export default function ListItem({ id }) {
     );
   };
 
+  const deleteItem = (itemId) => {
+    dispatch(handleDeleteServerItem(itemId));
+  };
+
   return (
     <li>
       <div>
-        <input type="checkbox" id="check" checked={itemCompletion} onClick={() => updateCompletion()} />
+        <input type="checkbox" id="check" defaultChecked={itemCompletion} onClick={() => updateCompletion()} />
         <input onChange={(e) => setItemTitle(e.target.value)} onBlur={(e) => updateTitle(e)} value={itemTitle} id={item.id} />
-        <button type="button">x</button>
+        <button type="button" onClick={() => deleteItem(item.id)}>
+          x
+        </button>
       </div>
     </li>
   );
 }
-
-// if (itemCompletion !== item.completed) {
-//   dispatch(
-//     handleUpdateServerItem({
-//       completed: `${itemCompletion}`,
-//       creationDate: `${item.creationDate}`,
-//       id: `${item.id}`,
-//       title: `${e.target.value}`,
-//     })
-//   );
-// }

@@ -54,3 +54,7 @@ export async function addServerItem(newItem) {
 }
 
 // Delete a server item
+export async function deleteServerItem(itemId) {
+  const response = await firebase.database().ref(`/shoppinglist/${itemId}`).remove();
+  return response;
+}
