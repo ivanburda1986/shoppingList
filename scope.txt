@@ -7,3 +7,7 @@
 --Create a new entry 
 --Delete an item
 --Styling
+
+
+Styling checkboxes 
+https://enzymeui.com/blog/how-to-style-checkbox-with-css
