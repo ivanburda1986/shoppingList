@@ -22,7 +22,6 @@ export async function receiveServerItems() {
 
 // Update a server item
 export async function updateServerItem(updatedItem) {
-  console.log("Hello from the updateServerItem function");
   const response = await firebase
     .database()
     .ref(`/shoppinglist/${updatedItem.id}`)
