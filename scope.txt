@@ -6,3 +6,4 @@
 --Show completed entries 
 --Create a new entry 
 --Delete an item
+--Styling

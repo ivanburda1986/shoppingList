@@ -6,6 +6,7 @@ import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers/index";
 import middleware from "./middleware";
+import "./index.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers(middleware));
