@@ -22,10 +22,16 @@ export default function ItemCreation() {
     setNewTitle("");
   };
 
+  const createItemByEnterPress = (e) => {
+    if (e.charCode === 13) {
+      createItem();
+    }
+  };
+
   return (
     <div className={sharedClasses.flex}>
       <input className={classes.invisible} />
-      <input className={sharedClasses.input} placeholder="Item name ... " value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+      <input className={sharedClasses.input} placeholder="Item name ... " value={newTitle} onKeyPress={(e) => createItemByEnterPress(e)} onChange={(e) => setNewTitle(e.target.value)} />
       <button className={sharedClasses.button} type="button" onClick={() => createItem()}>
         +
       </button>
