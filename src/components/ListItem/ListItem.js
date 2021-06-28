@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { handleUpdateServerItem, handleDeleteServerItem } from "../../actions/items";
 import { stringToBool } from "../../utils/helpers";
 
+import sharedClasses from "../Input-shared.module.css";
+
 export default function ListItem({ id }) {
   const item = useSelector((state) => state.items[id]);
 
@@ -48,11 +50,11 @@ export default function ListItem({ id }) {
 
   return (
     <li>
-      <div>
-        <input type="checkbox" id="check" defaultChecked={itemCompletion} onClick={() => updateCompletion()} />
-        <input onChange={(e) => setItemTitle(e.target.value)} onBlur={(e) => updateTitle(e)} value={itemTitle} id={item.id} />
-        <button type="button" onClick={() => deleteItem(item.id)}>
-          x
+      <div className={sharedClasses.flex}>
+        <input className={sharedClasses.checkbox} type="checkbox" id="check" defaultChecked={itemCompletion} onClick={() => updateCompletion()} />
+        <input className={sharedClasses.input} onChange={(e) => setItemTitle(e.target.value)} onBlur={(e) => updateTitle(e)} value={itemTitle} id={item.id} />
+        <button className={sharedClasses.button} type="button" onClick={() => deleteItem(item.id)}>
+          ✕
         </button>
       </div>
     </li>

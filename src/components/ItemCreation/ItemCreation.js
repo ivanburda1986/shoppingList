@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { handleAddServerItem } from "../../actions/items";
 
+import classes from "./ItemCreation.module.css";
+import sharedClasses from "../Input-shared.module.css";
+
 export default function ItemCreation() {
   const dispatch = useDispatch();
   const [newTitle, setNewTitle] = React.useState("");
@@ -20,9 +23,10 @@ export default function ItemCreation() {
   };
 
   return (
-    <div>
-      <input placeholder="Item name ... " value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
-      <button type="button" onClick={() => createItem()}>
+    <div className={sharedClasses.flex}>
+      <input className={classes.invisible} />
+      <input className={sharedClasses.input} placeholder="Item name ... " value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+      <button className={sharedClasses.button} type="button" onClick={() => createItem()}>
         +
       </button>
     </div>
