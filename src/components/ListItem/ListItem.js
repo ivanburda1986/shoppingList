@@ -14,6 +14,10 @@ export default function ListItem({ id }) {
 
   const dispatch = useDispatch();
 
+  React.useEffect(() => {
+    customCheckboxState();
+  }, [itemCompletion]);
+
   const updateTitle = (e) => {
     e.preventDefault();
     //Request an update only if the title has changed
@@ -49,13 +53,22 @@ export default function ListItem({ id }) {
     dispatch(handleDeleteServerItem(itemId));
   };
 
+  const customCheckboxState = () => {
+    let checkboxSelector = document.getElementById(`label${item.id}`);
+    if (itemCompletion) {
+      checkboxSelector.innerText = "✔";
+    } else {
+      checkboxSelector.innerText = "";
+    }
+  };
+
   return (
     <li>
       <div className={sharedClasses.flex}>
-        <input className={sharedClasses.checkbox} type="checkbox" id={`checkbox${item.id}`} defaultChecked={itemCompletion} onClick={() => updateCompletion()} />
-        <label className={classes.checkboxLabel} htmlFor={`checkbox${item.id}`}>
-          ✔
-        </label>
+        <div style={{ position: "relative" }}>
+          <label className={classes.checkboxLabel} htmlFor={`checkbox${item.id}`} id={`label${item.id}`}></label>
+          <input className={sharedClasses.checkbox} type="checkbox" id={`checkbox${item.id}`} defaultChecked={itemCompletion} onClick={(e) => updateCompletion(e)} />
+        </div>
         <input className={sharedClasses.input} onChange={(e) => setItemTitle(e.target.value)} onBlur={(e) => updateTitle(e)} value={itemTitle} id={item.id} />
         <button className={sharedClasses.button} type="button" onClick={() => deleteItem(item.id)}>
           ✕
