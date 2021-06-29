@@ -6,6 +6,7 @@ import { handleReceiveServerItems } from "./actions/items";
 import Navigation from "./components/Navigation/Navigation";
 import ItemCreation from "./components/ItemCreation/ItemCreation";
 import ShoppingList from "./contexts/ShoppingList/ShoppingList";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function App() {
         <Navigation />
         <ItemCreation />
         <ShoppingList />
+        <Footer />
       </div>
     </Router>
   );

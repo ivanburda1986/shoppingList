@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleUpdateServerItem, handleDeleteServerItem } from "../../actions/items";
 import { stringToBool } from "../../utils/helpers";
+import classes from "./ListItem.module.css";
 
 import sharedClasses from "../Input-shared.module.css";
 
@@ -51,7 +52,10 @@ export default function ListItem({ id }) {
   return (
     <li>
       <div className={sharedClasses.flex}>
-        <input className={sharedClasses.checkbox} type="checkbox" id="check" defaultChecked={itemCompletion} onClick={() => updateCompletion()} />
+        <input className={sharedClasses.checkbox} type="checkbox" id={`checkbox${item.id}`} defaultChecked={itemCompletion} onClick={() => updateCompletion()} />
+        <label className={classes.checkboxLabel} htmlFor={`checkbox${item.id}`}>
+          ✔
+        </label>
         <input className={sharedClasses.input} onChange={(e) => setItemTitle(e.target.value)} onBlur={(e) => updateTitle(e)} value={itemTitle} id={item.id} />
         <button className={sharedClasses.button} type="button" onClick={() => deleteItem(item.id)}>
           ✕

@@ -1,0 +1,11 @@
+.checkboxLabel {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0.5rem;
+  border: 2px solid #1c3030;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  color: #1c3030;
+}

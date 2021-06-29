@@ -8,6 +8,10 @@
 --Delete an item
 --Styling
 
+loading
+error handling
+
+
 
 Styling checkboxes 
 https://enzymeui.com/blog/how-to-style-checkbox-with-css

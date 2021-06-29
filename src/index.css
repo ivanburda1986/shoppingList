@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100vh;
+}
+
+body {
+  height: auto;
+}
+
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -30,11 +38,9 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
   background-color: #8fbc8f;
   font-family: "Inter", sans-serif;
+}
+
+#root {
 }
