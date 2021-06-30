@@ -1,0 +1,11 @@
+.Loading {
+  display: flex;
+  flex-direction: row;
+}
+
+.square {
+  height: 20px;
+  width: 10px;
+  background-color: antiquewhite;
+  margin-right: 5px;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ListItem from "../../components/ListItem/ListItem";
+import Loading from "../../components/Loading/Loading";
 
 export default function ShoppingList() {
   const shoppingListItems = useSelector((state) => state.items);
@@ -19,13 +20,14 @@ export default function ShoppingList() {
         };
       })
       .sort((a, b) => b.creationDate - a.creationDate);
-
     return (
-      <ul>
-        {shoppingListItemsSorted.map((item) => (
-          <ListItem key={item.id} id={item.id} />
-        ))}
-      </ul>
+      <React.Fragment>
+        <ul>
+          {shoppingListItemsSorted.map((item) => (
+            <ListItem key={item.id} id={item.id} />
+          ))}
+        </ul>
+      </React.Fragment>
     );
   }
 }
