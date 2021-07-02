@@ -1,13 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ListItem from "../../components/ListItem/ListItem";
-import Loading from "../../components/Loading/Loading";
+import { Loading } from "../../components/Loading/Loading";
+import classes from "./ShoppingList.module.css";
 
 export default function ShoppingList() {
   const shoppingListItems = useSelector((state) => state.items);
+  const loading = useSelector((state) => state.loading.state);
+
   //console.log(typeof shoppingListItems);
-  if (shoppingListItems.length === 0) {
-    return <div></div>;
+  if (loading === true) {
+    return (
+      <div className={classes.Loading}>
+        <p>Loading... </p>
+      </div>
+    );
   } else {
     const shoppingListItemsSorted = Object.keys(shoppingListItems)
       .map((id) => {

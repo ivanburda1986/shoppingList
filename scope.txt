@@ -15,3 +15,6 @@ error handling
 
 Styling checkboxes 
 https://enzymeui.com/blog/how-to-style-checkbox-with-css
+
+Redux toolkit 
+https://redux-toolkit.js.org/

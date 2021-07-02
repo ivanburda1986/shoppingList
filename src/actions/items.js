@@ -1,4 +1,5 @@
 import { receiveServerItems, updateServerItem, addServerItem, deleteServerItem } from "../utils/api";
+import { showLoading, hideLoading } from "./loading";
 
 export const RECEIVE_ITEMS = "RECEIVE_ITEMS";
 export const UPDATE_ITEM = "UPDATE_ITEM";
@@ -15,8 +16,10 @@ function receiveItems(items) {
 
 export function handleReceiveServerItems() {
   return (dispatch) => {
+    dispatch(showLoading());
     receiveServerItems().then((data) => {
       dispatch(receiveItems(data));
+      dispatch(hideLoading());
     });
   };
 }

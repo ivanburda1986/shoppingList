@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Loading.module.css";
 
-export default function Loading() {
+export function Loading() {
   const square = <div className={classes.square} key={0}></div>;
   const [squares, setSquares] = React.useState([square]);
 
