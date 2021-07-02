@@ -10,6 +10,7 @@ export default function Checkbox({ id }) {
   const item = useSelector((state) => state.items[id]);
   const [itemCompletion, setItemCompletion] = React.useState(stringToBool(item.completed));
   const dispatch = useDispatch();
+  const [classList, setclassList] = React.useState([classes.checkboxLabel]);
 
   React.useEffect(() => {
     customCheckboxState();
@@ -36,11 +37,21 @@ export default function Checkbox({ id }) {
     }
   };
 
+  const showFocus = () => {
+    setclassList(classList.concat(classes.focused));
+  };
+
+  const removeFocus = () => {
+    console.log(classList);
+    setclassList(classList.splice(0, 1));
+    console.log(classList);
+  };
+
   return (
     <>
       <div style={{ position: "relative" }}>
-        <label className={classes.checkboxLabel} htmlFor={`checkbox${item.id}`} id={`label${item.id}`}></label>
-        <input className={sharedClasses.checkbox} type="checkbox" id={`checkbox${item.id}`} defaultChecked={itemCompletion} onClick={(e) => updateCompletion(e)} />
+        <label className={classList.join(" ")} htmlFor={`checkbox${item.id}`} id={`label${item.id}`}></label>
+        <input className={sharedClasses.checkbox} type="checkbox" id={`checkbox${item.id}`} defaultChecked={itemCompletion} onFocus={() => showFocus()} onBlur={() => removeFocus()} onClick={(e) => updateCompletion(e)} />
       </div>
     </>
   );
