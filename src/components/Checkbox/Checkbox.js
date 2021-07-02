@@ -42,9 +42,7 @@ export default function Checkbox({ id }) {
   };
 
   const removeFocus = () => {
-    console.log(classList);
     setclassList(classList.splice(0, 1));
-    console.log(classList);
   };
 
   return (

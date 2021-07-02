@@ -8,7 +8,6 @@ export default function ShoppingList() {
   const shoppingListItems = useSelector((state) => state.items);
   const loading = useSelector((state) => state.loading.state);
 
-  //console.log(typeof shoppingListItems);
   if (loading === true) {
     return (
       <div className={classes.Loading}>
